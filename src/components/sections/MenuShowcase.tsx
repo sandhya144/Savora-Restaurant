@@ -41,13 +41,13 @@ export const MenuShowcase: React.FC<MenuShowcaseProps> = ({ onOpenReservation })
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase">
               <UtensilsCrossed className="w-4 h-4" />
-              <span>02 — CULINARY REPERTOIRE</span>
+              <span>02 — OUR MENUS</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-light tracking-tight">
-              The Tasting <span className="italic gold-gradient-text">Manifesto.</span>
+              The Tasting <span className="italic gold-gradient-text">Experience.</span>
             </h2>
             <p className="text-zinc-400 font-sans text-sm md:text-base max-w-xl font-light">
-              Crafted in rhythmic synchronization with the lunar calendar, forest foraging yields, and the daily catch of our Brittany fishermen.
+               Built around fresh seasonal produce, daily market finds, and ingredients at their peak.
             </p>
           </div>
 
@@ -108,7 +108,7 @@ export const MenuShowcase: React.FC<MenuShowcaseProps> = ({ onOpenReservation })
                 {currentMenu.pairingPrice}
               </div>
               <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
-                Sommelier Grand Cru Selection
+                  Curated Beverage Pairing Available
               </div>
             </div>
           </div>
@@ -135,9 +135,9 @@ export const MenuShowcase: React.FC<MenuShowcaseProps> = ({ onOpenReservation })
                     <h4 className="font-serif text-2xl sm:text-3xl text-zinc-100 group-hover:text-[#C5A059] transition-colors duration-300 font-normal">
                       {course.name}
                     </h4>
-                    {course.frenchName && (
+                    {course.localName && (
                       <p className="font-serif italic text-xs sm:text-sm text-zinc-500 mt-0.5">
-                        {course.frenchName}
+                        {course.localName}
                       </p>
                     )}
                   </div>
@@ -255,6 +255,9 @@ export const MenuShowcase: React.FC<MenuShowcaseProps> = ({ onOpenReservation })
             </button>
           </Magnetic>
         </div>
+
+
+        
       </div>
     </section>
   );

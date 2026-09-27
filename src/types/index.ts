@@ -2,7 +2,7 @@ export interface MenuItem {
   id: string;
   courseNumber: string;
   name: string;
-  frenchName?: string;
+  localName?: string;
   description: string;
   provenance: string;
   pairing: string;
