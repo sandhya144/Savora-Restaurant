@@ -10,7 +10,7 @@ export const RESTAURANT_INFO = {
   privateSalonHours: "Wednesday – Sunday • By Private Appointment",
   sommelier: "Julien de Saint-Hilaire",
   executiveChef: "Alexandre Vaneau",
-  philosophy: "A culinary sanctuary dedicated to ancestral wood-fired alchemy, nocturnal coastal foraging, and the unrepeatable poetry of the harvest season.",
+  philosophy: "At Savora, every bite tells a story — one that begins with wood-fired tradition, draws from the freshness of the coast, and follows the natural rhythm of the seasons.",
 };
 
 export const TASTING_MENUS: TastingMenu[] = [

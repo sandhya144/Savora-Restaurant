@@ -61,10 +61,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
         ref={backgroundRef}
         className="absolute inset-0 -top-[15%] -bottom-[15%] w-full h-[130%] pointer-events-none"
       >
+        
         <img
           src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2400&q=85"
           alt="Cinematic wood-fired gastronomy"
-          className="w-full h-full object-cover object-center filter brightness-[0.38] contrast-[1.15] scale-105 transition-transform duration-1000 ease-out"
+          className="w-full h-full object-cover object-center filter brightness-[0.58] contrast-[1.15] scale-105 transition-transform duration-1000 ease-out"
         />
         {/* Layered cinematic vignettes */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/40 to-[#080808]/70" />
@@ -97,8 +98,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
         </motion.div>
       </div> */}
 
+
+
       {/* Center Monumental Typography */}
-      <div className="relative z-10 max-w-6xl my-auto py-8">
+      {/* <div className="relative mt-0.5 z-10 max-w-6xl my-auto py-8">
         <div className="overflow-hidden">
           <h1
             ref={titleLine1Ref}
@@ -113,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
             ref={titleLine2Ref}
             className="font-serif italic font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8.5rem] tracking-tight gold-gradient-text leading-[0.92]"
           >
-            Meets Ephemera.
+            Meets Wonder.
           </h2>
         </div>
 
@@ -124,10 +127,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
           className="mt-8 max-w-xl text-base sm:text-lg md:text-xl font-sans text-zinc-300 font-light leading-relaxed"
         >
           {RESTAURANT_INFO.philosophy}
-        </motion.p>
+        </motion.p> */}
 
         {/* Action Buttons */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.1 }}
@@ -153,7 +156,68 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
             </button>
           </Magnetic>
         </motion.div>
-      </div>
+      </div> */}
+
+{/* Center Monumental Typography */}
+<div className="relative mt-0.5 z-10 max-w-6xl mx-auto my-auto py-8 flex flex-col items-center text-center">
+  <div className="overflow-hidden">
+    <h1
+      ref={titleLine1Ref}
+      className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[9.5rem] tracking-tight font-light uppercase text-white leading-[0.92]"
+    >
+      WHERE FIRE
+    </h1>
+  </div>
+
+  <div className="overflow-hidden mt-1 md:mt-2">
+    <h2
+      ref={titleLine2Ref}
+      className="font-serif italic font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8.5rem] tracking-tight gold-gradient-text leading-[0.92]"
+    >
+      Meets Wonder.
+    </h2>
+  </div>
+
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.9, delay: 0.9 }}
+    className="mt-8 max-w-xl mx-auto text-base sm:text-lg md:text-xl font-sans text-zinc-300 font-light leading-relaxed"
+  >
+    {RESTAURANT_INFO.philosophy}
+  </motion.p>
+
+  {/* Action Buttons */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.9, delay: 1.1 }}
+    className="mt-10 flex flex-wrap items-center justify-center gap-5"
+  >
+    <Magnetic strength={0.3}>
+      <button
+        onClick={onOpenReservation}
+        data-cursor="RESERVE"
+        className="px-8 py-4 rounded-full bg-[#C5A059] hover:bg-[#d6b46b] text-[#080808] font-sans text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-300 shadow-xl shadow-[#C5A059]/20"
+      >
+        Request Reservation
+      </button>
+    </Magnetic>
+
+    <Magnetic strength={0.2}>
+      <button
+        onClick={() => scrollTo('#menu')}
+        data-cursor="MENU"
+        className="px-8 py-4 rounded-full border border-white/20 hover:border-white text-zinc-200 hover:text-white font-sans text-xs uppercase tracking-[0.25em] font-medium transition-all duration-300 backdrop-blur-sm"
+      >
+        Explore Menus
+      </button>
+    </Magnetic>
+  </motion.div>
+</div>
+
+
+
 
       {/* Bottom Coordinates, Season, and Scroll Cue */}
       <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-6 border-t border-white/10">
