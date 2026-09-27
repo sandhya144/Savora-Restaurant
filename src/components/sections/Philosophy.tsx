@@ -58,23 +58,23 @@ export const Philosophy: React.FC = () => {
         >
           <div className="flex items-center space-x-3 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase">
             <Compass className="w-4 h-4" />
-            <span>01 — THE PHILOSOPHY</span>
+            <span>01 — OUR PHILOSOPHY</span>
           </div>
 
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-light leading-[1.08] tracking-tight">
-            An Atelier Built on <span className="italic gold-gradient-text">Elemental Restraint.</span>
+            Simple Ingredients, <span className="italic gold-gradient-text">Honest Fire.</span>
           </h2>
 
           <p className="text-zinc-300 font-sans text-base md:text-lg leading-relaxed font-light">
-            We reject culinary ornamentation in pursuit of visceral truth. At L'ÉCRIN, every ingredient is harvested at the twilight hour, honored through centuries-old charring methods, and served at the apex of its fleeting vitality.
+           We keep things simple. At Savora, every ingredient is picked fresh, cooked over an open flame using methods passed down for generations, and served while it's at its best.
           </p>
 
           <div className="p-6 rounded-2xl bg-zinc-950/60 border border-white/10 space-y-4">
             <blockquote className="font-serif italic text-lg text-zinc-200 leading-relaxed">
-              "We do not bend nature to our technique. We build fires to listen to what the forest and the sea have already decided."
+               "We don't try to control nature. We build the fire, and let the ingredients speak for themselves."
             </blockquote>
             <div className="flex items-center justify-between text-xs font-mono tracking-wider text-zinc-400 pt-2 border-t border-white/10">
-              <span className="text-[#C5A059]">Alexandre Vaneau</span>
+              <span className="text-[#C5A059]">Chef Vivaan Kapoor</span>
               <span>Executive Chef & Founder</span>
             </div>
           </div>

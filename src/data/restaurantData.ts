@@ -277,23 +277,23 @@ export const ACCOLADES: Accolade[] = [
 export const PHILOSOPHY_PILLARS = [
   {
     number: "01",
-    title: "The Primal Hearth",
-    subtitle: "Binchotan & Ancient Smoke",
-    description: "Fire is not merely our heat source; it is our principal seasoning. We harness pure Japanese oak charcoal and cured cedar woods to reveal volatile terpenes hidden deep within wild game and oceanic marrow.",
+    title: "The Open Fire",
+    subtitle: "Charcoal & Smoke",
+    description: "Fire is not just how we cook — it's how we add flavor. We use traditional charcoal and seasoned wood to bring out deep, smoky flavors in everything from meats to vegetables.",
     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80"
   },
   {
     number: "02",
-    title: "The Nocturne Harvest",
-    subtitle: "Botanical Foraging at Low Tide",
-    description: "Every dawn and twilight, our foraging team traverses the misted woodlands of Rambouillet and the rocky granite shelves of Brittany, harvesting sea kale, spruce tips, and rare wood sorrel at peak aromatic potency.",
+    title: "The Morning Harvest",
+    subtitle: "Fresh from Farm and Coast",
+    description: "Every morning, our team sources fresh greens, herbs, and seafood from local farms and coastal markets, picked at their peak so every dish tastes as fresh as possible.",
     image: "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=900&q=80"
   },
   {
     number: "03",
-    title: "The Subterranean Vault",
-    subtitle: "Four Thousand Living Vintages",
-    description: "Beneath Place Vendôme lies our 18th-century limestone cellar, housing pre-phylloxera rarities, biodynamic Grower Champagnes, and legendary Grand Crus aged in silent equilibrium.",
-    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=80"
+    title: "The Masala Vault",
+    subtitle: "Spices, Pickles & Slow Time",
+    description: "Deep within Savora lies our spice vault — home to hand-ground masalas, sun-aged pickles, and chutneys left to mature for months. Every blend is made in-house, the old-fashioned way.",
+    image: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=900&q=80"
   }
 ];
