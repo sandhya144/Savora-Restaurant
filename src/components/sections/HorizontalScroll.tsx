@@ -52,15 +52,15 @@ export const HorizontalScroll: React.FC = () => {
           <div>
             <div className="flex items-center space-x-2 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase mb-2">
               <Camera className="w-4 h-4" />
-              <span>03 — THE CULINARY ODYSSEY</span>
+              <span>03 — OUR FOOD ODYSSEY</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-white font-light">
-              Moments of <span className="italic gold-gradient-text">Elemental Alchemy.</span>
+              Moments of <span className="italic gold-gradient-text">Great Cooking.</span>
             </h2>
           </div>
 
           <div className="hidden lg:flex items-center space-x-3 text-xs font-mono text-zinc-400">
-            <span>SCROLL DOWN TO TRAVERSE</span>
+            <span>SCROLL DOWN TO SEE MORE</span>
             <ArrowRight className="w-4 h-4 text-[#C5A059] animate-pulse" />
           </div>
         </div>
@@ -100,8 +100,8 @@ export const HorizontalScroll: React.FC = () => {
                   {item.caption}
                 </p>
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                  <span>ATELIER ARCHIVE</span>
-                  <span className="text-[#C5A059]">VOL. VI NOCTURNE</span>
+                  <span>OUR PHOTO COLLECTION</span>
+                  <span className="text-[#C5A059]">NIGHT MENU</span>
                 </div>
               </div>
             </div>

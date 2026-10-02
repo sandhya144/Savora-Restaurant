@@ -238,10 +238,11 @@ export const MenuShowcase: React.FC<MenuShowcaseProps> = ({ onOpenReservation })
           <div className="space-y-1 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start space-x-2 text-xs font-mono text-[#C5A059] uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Bespoke Dietary Adaptations</span>
+              <span>Special Dietary Needs</span>
             </div>
-            <p className="text-xs text-zinc-400 font-sans max-w-xl font-light">
-              We gladly accommodate pescatarian, vegetarian, and rare allergen requests with 48 hours advance notice prior to your seating.
+            <p className="text-sm text-zinc-400 font-sans max-w-xl font-light">
+              We can prepare vegetarian, pescatarian, and allergy-friendly meals.
+              Just let us know at least 48 hours before your booking.
             </p>
           </div>
 

@@ -24,7 +24,7 @@ export interface TastingMenu {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Atelier' | 'Cuisine' | 'Cellar' | 'Sanctuary';
+  category: 'Atelier' | 'Cuisine' | 'Cellar' | 'Sanctuary' | 'Kitchen' | 'Beverages' | 'Private Room';
   caption: string;
   image: string;
   aspectRatio?: string;

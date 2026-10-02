@@ -224,56 +224,109 @@ export const TASTING_MENUS: TastingMenu[] = [
 
 
 
+// export const GALLERY_ITEMS: GalleryItem[] = [
+//   {
+//     id: "g1",
+//     title: "The Binchotan Hearth",
+//     category: "Atelier",
+//     caption: "Rare white charcoal embers imported from Kishu, burning at 1,000°C with absolute odorless purity.",
+//     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=85",
+//     orientation: "landscape"
+//   },
+//   {
+//     id: "g2",
+//     title: "Subterranean Crypt Vintages",
+//     category: "Cellar",
+//     caption: "Over 4,200 curated references dating back to 1928, preserved at steady 12°C humidity.",
+//     image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=85",
+//     orientation: "portrait"
+//   },
+//   {
+//     id: "g3",
+//     title: "The Nocturne Plating Counter",
+//     category: "Cuisine",
+//     caption: "Quiet precision at the pass. Each plate undergoes five microscopic temperature and glaze checks.",
+//     image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1600&q=85",
+//     orientation: "landscape"
+//   },
+//   {
+//     id: "g4",
+//     title: "Salon L'Alchimiste",
+//     category: "Sanctuary",
+//     caption: "Private dining chamber encased in patinated bronze, black volcanic basalt, and velvet acoustics.",
+//     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85",
+//     orientation: "landscape"
+//   },
+//   {
+//     id: "g5",
+//     title: "Foraging at Dawn",
+//     category: "Atelier",
+//     caption: "Coastal sea herbs gathered during low tide in Northern Brittany, delivered same morning.",
+//     image: "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1600&q=85",
+//     orientation: "portrait"
+//   },
+//   {
+//     id: "g6",
+//     title: "The Sommelier Pour",
+//     category: "Cellar",
+//     caption: "Hand-blown Zalto glassware, decanted precisely according to atmospheric pressure and vintage age.",
+//     image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1600&q=85",
+//     orientation: "landscape"
+//   }
+// ];
+
+
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g1",
-    title: "The Binchotan Hearth",
-    category: "Atelier",
-    caption: "Rare white charcoal embers imported from Kishu, burning at 1,000°C with absolute odorless purity.",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=85",
+    title: "The Tandoor Fire",
+    category: "Kitchen",
+    caption: "Our clay tandoor burns real charcoal and wood. It gives our kebabs and lamb a deep, smoky taste.",
+    image: "https://images.pexels.com/photos/31587880/pexels-photo-31587880.jpeg",
     orientation: "landscape"
   },
   {
     id: "g2",
-    title: "Subterranean Crypt Vintages",
-    category: "Cellar",
-    caption: "Over 4,200 curated references dating back to 1928, preserved at steady 12°C humidity.",
-    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=85",
+    title: "The Beverage Bar",
+    category: "Beverages",
+    caption: "Fresh juices, spiced mocktails, lassi, masala chai and crafted cocktails, all made fresh to go with your meal.",
+    image: "https://images.pexels.com/photos/19335838/pexels-photo-19335838.jpeg",
     orientation: "portrait"
   },
   {
     id: "g3",
-    title: "The Nocturne Plating Counter",
+    title: "The Plating Counter",
     category: "Cuisine",
-    caption: "Quiet precision at the pass. Each plate undergoes five microscopic temperature and glaze checks.",
-    image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1600&q=85",
+    caption: "Every dish is checked by our chefs for heat, colour and taste before it comes to your table.",
+    image: "https://images.pexels.com/photos/39044714/pexels-photo-39044714.jpeg",
     orientation: "landscape"
   },
   {
     id: "g4",
-    title: "Salon L'Alchimiste",
-    category: "Sanctuary",
-    caption: "Private dining chamber encased in patinated bronze, black volcanic basalt, and velvet acoustics.",
+    title: "The Private Dining Room",
+    category: "Private Room",
+    caption: "A quiet room for family dinners and special evenings, with warm brass lights, dark wood and soft seats.",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85",
     orientation: "landscape"
   },
   {
     id: "g5",
-    title: "Foraging at Dawn",
-    category: "Atelier",
-    caption: "Coastal sea herbs gathered during low tide in Northern Brittany, delivered same morning.",
-    image: "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1600&q=85",
+    title: "Fresh From the Market",
+    category: "Kitchen",
+    caption: "Greens, herbs and fish come in every morning from local farms and coastal markets, and are cooked the same day.",
+    image: "https://images.pexels.com/photos/7129126/pexels-photo-7129126.jpeg",
     orientation: "portrait"
   },
   {
     id: "g6",
-    title: "The Sommelier Pour",
-    category: "Cellar",
-    caption: "Hand-blown Zalto glassware, decanted precisely according to atmospheric pressure and vintage age.",
-    image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1600&q=85",
+    title: "The Pairing Pour",
+    category: "Beverages",
+    caption: "Each course comes with a matching drink, from cool mocktails and cold brews to warm chai and cocktails.",
+    image: "https://images.pexels.com/photos/20371530/pexels-photo-20371530.jpeg",
     orientation: "landscape"
   }
 ];
+
 
 export const ACCOLADES: Accolade[] = [
   {
@@ -305,6 +358,9 @@ export const ACCOLADES: Accolade[] = [
     distinction: "Restaurant of the Year"
   }
 ];
+
+
+
 
 export const PHILOSOPHY_PILLARS = [
   {
