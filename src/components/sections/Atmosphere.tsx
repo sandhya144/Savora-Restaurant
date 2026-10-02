@@ -12,35 +12,38 @@ interface SpaceDetail {
   image: string;
 }
 
+
 const spaces: SpaceDetail[] = [
   {
     id: 'main-room',
-    name: "The Nocturne Dining Room",
-    subtitle: "Acoustic Silence & Volcanic Basalt",
-    capacity: "32 Guests Maximum",
-    description: "Designed by Studio Liaigre, the main sanctuary features acoustic walls clad in charcoal felt, unpolished Belgian basalt monoliths, and individual pin-spot lighting calibrated to illuminate only the plate.",
-    features: ["Acoustic dampening below 38dB", "Direct line of sight to open hearth", "Hand-blown Murano smoked glass"],
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85"
+    name: "The Main Dining Room",
+    subtitle: "A quiet room with dark stone and soft sound",
+    capacity: "Seats up to 32 guests",
+    description: "Designed by Studio Liaigre, our main dining room has dark felt-covered walls that soak up noise, rough stone tables from Belgium, and small spotlights that shine only on your plate. It is calm, dim, and made for good conversation.",
+    features: ["Very quiet (below 38 decibels)", "View of the open fire kitchen", "Hand-blown smoked glass from Murano"],
+    image: "https://images.pexels.com/photos/27923189/pexels-photo-27923189.jpeg"
   },
   {
     id: 'salon-prive',
-    name: "Salon L'Alchimiste",
-    subtitle: "Exclusive Private Chamber",
-    capacity: "Up to 10 Guests",
-    description: "A subterranean jewel box enclosed in hand-hammered patinated brass. Features a dedicated live-ember cooking station and private entrance from Place Vendôme.",
-    features: ["Dedicated private sommelier", "Customized bespoke multi-course curation", "Subterranean sound insulation"],
-    image: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1600&q=85"
+    name: "The Private Room",
+    subtitle: "A private dining room for small groups",
+    capacity: "Up to 10 guests",
+    description: "A cozy room below street level, with walls made of hand-hammered brass. It has its own cooking station over live embers and a private entrance from Place Vendôme.",
+    features: ["Your own personal wine expert", "A multi-course menu made just for you", "Soundproofed, so your group stays private"],
+    image: "https://images.pexels.com/photos/4915547/pexels-photo-4915547.jpeg"
   },
-  {
-    id: 'cellar-crypt',
-    name: "The 1782 Limestone Crypt",
-    subtitle: "Historic Cellar & Tasting Salon",
-    capacity: "Tasting Table for 6",
-    description: "Carved three stories below the Paris cobblestones during the pre-revolutionary era. Surrounding you are 4,200 bottles resting in constant 12°C humidity.",
-    features: ["Pre-phylloxera museum rarities", "Sommelier-guided horizontal flights", "Artisanal affiné cheese chamber"],
-    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=85"
+    {
+    id: 'beverage-bar',
+    name: "The Beverage Bar",
+    subtitle: "A relaxed bar for drinks before or after your meal",
+    capacity: "Seats up to 12 guests",
+    description: "Stop by our bar for a drink before dinner or a last glass after dessert. Our bartenders make classic and house cocktails, and the bar also serves wine, spirits and non-alcoholic drinks. It is a calm place to meet friends or wait for your table.",
+    features: ["Classic and house cocktails", "Wine, spirits and non-alcoholic drinks", "Drinks that pair well with your meal"],
+    image: "https://images.pexels.com/photos/32083239/pexels-photo-32083239.jpeg"
   }
 ];
+
+
 
 export const Atmosphere: React.FC<{ onOpenReservation: () => void }> = ({ onOpenReservation }) => {
   const [selectedSpace, setSelectedSpace] = useState<SpaceDetail | null>(null);
@@ -55,13 +58,13 @@ export const Atmosphere: React.FC<{ onOpenReservation: () => void }> = ({ onOpen
         <div className="mb-16 space-y-3">
           <div className="flex items-center space-x-2 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase">
             <Compass className="w-4 h-4" />
-            <span>04 — SPATIAL ARCHITECTURE</span>
+            <span>04 — OUR SPACES</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-light">
-            The <span className="italic gold-gradient-text">Sanctuaries.</span>
+            The <span className="italic gold-gradient-text">Architectures.</span>
           </h2>
           <p className="text-zinc-400 font-sans text-sm sm:text-base max-w-xl font-light">
-            Intimacy is our highest luxury. Every table at L'ÉCRIN is partitioned by shadows, distance, and acoustic quietude.
+            We keep things calm and private. Tables are well spaced and the lighting is soft, so every guest feels comfortable.
           </p>
         </div>
 
@@ -96,7 +99,7 @@ export const Atmosphere: React.FC<{ onOpenReservation: () => void }> = ({ onOpen
               </p>
               <div className="flex items-center space-x-2 text-xs font-mono text-zinc-400 pt-3">
                 <Maximize2 className="w-3.5 h-3.5 text-[#C5A059]" />
-                <span>Click to view architectural specifications</span>
+                <span>Click to see more details</span>
               </div>
             </div>
           </div>
@@ -193,7 +196,7 @@ export const Atmosphere: React.FC<{ onOpenReservation: () => void }> = ({ onOpen
 
                 <div className="space-y-2 pt-2 border-t border-white/10">
                   <span className="text-xs font-mono uppercase tracking-widest text-[#C5A059]">
-                    Architectural Features
+                    What this room offers
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     {selectedSpace.features.map((feature, i) => (
@@ -213,7 +216,7 @@ export const Atmosphere: React.FC<{ onOpenReservation: () => void }> = ({ onOpen
                     }}
                     className="px-8 py-3.5 rounded-full bg-[#C5A059] text-[#080808] text-xs font-mono uppercase tracking-widest font-semibold hover:bg-[#d6b46b] transition-colors"
                   >
-                    Inquire for this Chamber
+                    Inquire for this Room
                   </button>
                 </div>
               </div>

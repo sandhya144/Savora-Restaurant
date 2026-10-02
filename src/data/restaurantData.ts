@@ -223,59 +223,6 @@ export const TASTING_MENUS: TastingMenu[] = [
 ];
 
 
-
-// export const GALLERY_ITEMS: GalleryItem[] = [
-//   {
-//     id: "g1",
-//     title: "The Binchotan Hearth",
-//     category: "Atelier",
-//     caption: "Rare white charcoal embers imported from Kishu, burning at 1,000°C with absolute odorless purity.",
-//     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=85",
-//     orientation: "landscape"
-//   },
-//   {
-//     id: "g2",
-//     title: "Subterranean Crypt Vintages",
-//     category: "Cellar",
-//     caption: "Over 4,200 curated references dating back to 1928, preserved at steady 12°C humidity.",
-//     image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=85",
-//     orientation: "portrait"
-//   },
-//   {
-//     id: "g3",
-//     title: "The Nocturne Plating Counter",
-//     category: "Cuisine",
-//     caption: "Quiet precision at the pass. Each plate undergoes five microscopic temperature and glaze checks.",
-//     image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1600&q=85",
-//     orientation: "landscape"
-//   },
-//   {
-//     id: "g4",
-//     title: "Salon L'Alchimiste",
-//     category: "Sanctuary",
-//     caption: "Private dining chamber encased in patinated bronze, black volcanic basalt, and velvet acoustics.",
-//     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85",
-//     orientation: "landscape"
-//   },
-//   {
-//     id: "g5",
-//     title: "Foraging at Dawn",
-//     category: "Atelier",
-//     caption: "Coastal sea herbs gathered during low tide in Northern Brittany, delivered same morning.",
-//     image: "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1600&q=85",
-//     orientation: "portrait"
-//   },
-//   {
-//     id: "g6",
-//     title: "The Sommelier Pour",
-//     category: "Cellar",
-//     caption: "Hand-blown Zalto glassware, decanted precisely according to atmospheric pressure and vintage age.",
-//     image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1600&q=85",
-//     orientation: "landscape"
-//   }
-// ];
-
-
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g1",
@@ -358,7 +305,6 @@ export const ACCOLADES: Accolade[] = [
     distinction: "Restaurant of the Year"
   }
 ];
-
 
 
 
