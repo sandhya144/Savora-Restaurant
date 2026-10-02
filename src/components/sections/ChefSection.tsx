@@ -14,7 +14,7 @@ export const ChefSection: React.FC = () => {
           <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-950 aspect-[4/5] max-w-md mx-auto">
             <img
               src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=85"
-              alt="Executive Chef Alexandre Vaneau"
+              alt="Head Chef of Savora"
               className="w-full h-full object-cover object-top filter grayscale contrast-[1.2] brightness-[0.85]"
               loading="lazy"
             />
@@ -24,7 +24,7 @@ export const ChefSection: React.FC = () => {
             <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#080808]/85 backdrop-blur-md border border-white/10 flex items-center justify-between">
               <div>
                 <span className="font-serif text-lg text-white font-medium block">
-                  Alexandre Vaneau
+                  Vivaan Kapoor
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C5A059]">
                   Executive Chef & Founder
@@ -43,19 +43,19 @@ export const ChefSection: React.FC = () => {
         <div className="lg:col-span-7 space-y-8">
           <div className="flex items-center space-x-2 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase">
             <Sparkles className="w-4 h-4" />
-            <span>05 — THE ATELIER MASTER</span>
+            <span>05 — MEET OUR CHEF</span>
           </div>
 
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-light leading-[1.08]">
-            Lineage of <span className="italic gold-gradient-text">Uncompromising Fire.</span>
+            Cooking with <span className="italic gold-gradient-text">Real Fire.</span>
           </h2>
 
           <div className="space-y-4 text-zinc-300 font-sans text-base md:text-lg leading-relaxed font-light">
             <p>
-              Trained across three continents — from the multi-generational kaiseki sanctuaries of Kyoto to three-star seaside kitchens in Menton and Paris — Alexandre Vaneau founded L'ÉCRIN with a singular, radical ethos: to strip away culinary ego and let raw terroir command the senses.
+              Our head chef has trained in kitchens around the world, from Japan to the south of France. He opened Savora with one simple idea: use fresh, local ingredients and let their natural taste speak for itself.
             </p>
             <p>
-              His kitchen operates not as a traditional brigade, but as an artisan guild. No gas flames are utilized in the preparation of savory courses; heat is governed purely by Kishu Binchotan oak coals and fragrant French vine clippings.
+              Our kitchen works like a close team, not a strict hierarchy. We cook over real wood and charcoal instead of gas, which gives our dishes a gentle smoky flavor you can't get any other way.
             </p>
           </div>
 
@@ -90,10 +90,10 @@ export const ChefSection: React.FC = () => {
 
             <div>
               <div className="font-serif text-3xl md:text-4xl text-white font-light">
-                4,200
+                40+
               </div>
               <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 mt-1">
-                Cellar References
+               Drinks at Our Bar
               </div>
             </div>
           </div>
@@ -101,10 +101,10 @@ export const ChefSection: React.FC = () => {
           {/* Signature Quote */}
           <div className="pt-4">
             <p className="font-serif italic text-xl text-zinc-200">
-              "We cook for the memory you will carry into the winter morning after."
+              "We want every meal at Savora to be one you remember for a long time."
             </p>
             <div className="mt-2 text-xs font-mono tracking-widest text-[#C5A059] uppercase">
-              — A. Vaneau
+              — Vivaan Kapoor, Head Chef, Savora
             </div>
           </div>
         </div>
