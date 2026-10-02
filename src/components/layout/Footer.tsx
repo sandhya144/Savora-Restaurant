@@ -27,13 +27,13 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center space-x-2 text-xs font-mono tracking-[0.25em] text-[#C5A059] uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>THE SOLSTICE EPHEMERA</span>
+              <span>OUR NEWSLETTER</span>
             </div>
             <h4 className="font-serif text-2xl text-zinc-100 font-light">
-              Receive Privileged Seasonal Tasting Dispatches
+              Get News and Offers from Savora
             </h4>
             <p className="text-zinc-400 text-xs font-sans font-light leading-relaxed">
-              We announce seasonal tasting bookings, rare pre-phylloxera cellar tastings, and guest chef residencies four times per annum.
+              Sign up to hear about new seasonal menus, special events and bar nights. We send an email about four times a year.
             </p>
 
             <form onSubmit={handleSubscribe} className="pt-2">
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
               </div>
               {subscribed && (
                 <p className="text-[11px] font-mono text-[#C5A059] mt-2">
-                  You are now enrolled in our privileged dispatches.
+                  Thank you! You are now signed up.
                 </p>
               )}
             </form>
@@ -65,20 +65,20 @@ export const Footer: React.FC = () => {
           {/* Column 2: Hours & Service */}
           <div className="lg:col-span-3 space-y-3">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#C5A059] block">
-              SERVICE HOURS
+              OPENING HOURS
             </span>
             <div className="text-sm font-sans space-y-2 text-zinc-300 font-light">
-              <p>
-                <strong className="text-white font-normal block font-mono text-xs text-zinc-400">DINNER SEATINGS</strong>
-                Tuesday — Saturday: 19:00 — 23:30
+              <p className='text-xs'>
+                <strong className="text-white font-normal block font-mono text-xs text-zinc-400">DINNER</strong>
+                Tuesday — Saturday: 7:00 am – 11:30 pm
               </p>
-              <p>
-                <strong className="text-white font-normal block font-mono text-xs text-zinc-400">SALON L'ALCHIMISTE</strong>
-                By Appointment Only
+              <p className='text-xs'>
+                <strong className="text-white font-normal block font-mono text-xs text-zinc-400">PRIVATE ROOMS</strong>
+                Booking required
               </p>
-              <p>
-                <strong className="text-white font-normal block font-mono text-xs text-zinc-400">ANNUAL CLOSURES</strong>
-                First two weeks of August & New Year Week
+              <p className='text-xs'>
+                <strong className="text-white font-normal block font-mono text-xs text-zinc-400">CLOSED</strong>
+                 First two weeks of August and New Year week
               </p>
             </div>
           </div>
@@ -86,29 +86,29 @@ export const Footer: React.FC = () => {
           {/* Column 3: Location & Coordinates */}
           <div className="lg:col-span-3 space-y-3">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#C5A059] block">
-              THE ATELIER
+             FIND US
             </span>
             <div className="text-sm font-sans space-y-2 text-zinc-300 font-light">
-              <p>18 Place Vendôme</p>
-              <p>75001 Paris, France</p>
+              <p>18 Place</p>
+              <p>Banglore, India</p>
               <p className="font-mono text-xs text-[#C5A059]">48°51'24.8"N 2°21'07.2"E</p>
-              <p className="font-mono text-xs text-zinc-400 pt-1">+33 (0)1 42 68 18 90</p>
+              <p className="font-mono text-xs text-zinc-400 pt-1">+91 9876543210</p>
             </div>
           </div>
 
           {/* Column 4: Etiquette & Protocol */}
           <div className="lg:col-span-2 space-y-3">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#C5A059] block">
-              ETIQUETTE
+             GOOD TO KNOW
             </span>
             <p className="text-xs font-sans text-zinc-400 font-light leading-relaxed">
-              Jackets requested for gentlemen. Photography is kindly discouraged to protect guests' privacy.
+              Smart casual dress is preferred. Please keep photos to your own table so other guests can enjoy their privacy.
             </p>
             <div className="pt-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block">
-                VALET PARKING & PRIVATE CAR
+                PARKING
               </span>
-              <span className="text-xs text-zinc-300">Available upon arrival</span>
+              <span className="text-xs text-zinc-300">Ask our team when you arrive</span>
             </div>
           </div>
         </div>
@@ -132,8 +132,8 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar: Copyright, Back to Top */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 border-t border-white/10 text-xs font-mono text-zinc-500 tracking-wider">
           <div className="flex items-center space-x-6">
-            <span>© {new Date().getFullYear()} L'ÉCRIN PARIS</span>
-            <span>THREE MICHELIN STARS</span>
+            <span>© {new Date().getFullYear()} SAVORA</span>
+            <span>ALL RIGHTS RESERVED</span>
           </div>
 
           <Magnetic strength={0.3}>
@@ -141,7 +141,7 @@ export const Footer: React.FC = () => {
               onClick={() => scrollTo('#hero')}
               className="flex items-center space-x-2 text-zinc-400 hover:text-[#C5A059] transition-colors duration-300 px-4 py-2 rounded-full border border-white/10 hover:border-[#C5A059]/40"
             >
-              <span>Back to Apex</span>
+              <span>Back to Top</span>
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </Magnetic>
