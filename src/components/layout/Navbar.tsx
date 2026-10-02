@@ -181,6 +181,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDrawer, onOpenReservation 
               Menus
             </button>
             <button
+              onClick={() => scrollTo('#reels')}
+              className="hover:text-[#C5A059] transition-colors duration-300"
+            >
+              Reels
+            </button>
+            <button
               onClick={() => scrollTo('#gallery')}
               className="hover:text-[#C5A059] transition-colors duration-300"
             >
