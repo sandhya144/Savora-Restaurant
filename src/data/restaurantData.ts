@@ -278,34 +278,33 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 export const ACCOLADES: Accolade[] = [
   {
     id: "a1",
-    publication: "MICHELIN GUIDE",
-    quote: "Alexandre Vaneau has created an intoxicating nocturne temple. The binchotan-fired lobster and aged duck are moments of pure culinary transcendence.",
-    year: "2025 Edition",
-    distinction: "Three Michelin Stars"
+    publication: "Guest Review",
+    quote: "We came to Savora for our anniversary and left feeling like we had been part of something special. The dishes had a smoky flavor that made every bite memorable, and the vegetables tasted as fresh. The room was calm and softly lit.",
+    year: "2025",
+    distinction: "Dinner guest"
   },
   {
     id: "a2",
-    publication: "THE WORLD'S 50 BEST RESTAURANTS",
-    quote: "An extraordinary masterclass in sensory restraint and charcoal poetry. Dining at L'Écrin is not merely eating; it is an unforgettable nocturnal ceremony.",
-    year: "Ranked N° 04 Globally",
-    distinction: "Highest New Entry & Art of Hospitality Award"
+    publication: "Guest Review",
+    quote: "From the moment we walked in, the staff made us feel welcome. They explained each dish clearly and always seemed to appear when we needed something. The food was cooked with real care. Nothing felt rushed, and every plate arrived looking beautiful.",
+    year: "2025",
+    distinction: "Anniversary dinner"
   },
   {
     id: "a3",
-    publication: "LE MONDE GASTRONOMIE",
-    quote: "The acoustic silence, the warm bronze glow, and the breathtaking precision of each sauce make L'Écrin the defining culinary landmark of our decade.",
-    year: "Review by François-Régis Gaudry",
-    distinction: "Grand Prix de l'Excellence"
+    publication: "Guest Review",
+    quote: "We booked the private room for a family dinner with ten people, and it was perfect. The room is quiet and cozy, so everyone could hear each other and relax. The menu was made just for our group, and the team took care of every small detail, from the seating to the drinks.",
+    year: "2025",
+    distinction: "Private room guest"
   },
   {
     id: "a4",
-    publication: "FINANCIAL TIMES",
-    quote: "Where modern Nordic foraging philosophy meets the aristocratic precision of classical French cellarmasters.",
-    year: "FT Weekend Review",
-    distinction: "Restaurant of the Year"
+    publication: "Guest Review",
+    quote: "We stopped by the bar for a drink before dinner and ended up staying longer than planned. The bartender asked what flavors we liked and made us two cocktails that were perfectly balanced. There were also great non-alcoholic options for my friend.",
+    year: "2025",
+    distinction: "Bar guest"
   }
 ];
-
 
 
 export const PHILOSOPHY_PILLARS = [

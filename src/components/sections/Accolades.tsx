@@ -23,27 +23,41 @@ export const Accolades: React.FC = () => {
         {/* Eyebrow */}
         <div className="flex items-center justify-center space-x-2 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase mb-12">
           <Award className="w-4 h-4" />
-          <span>06 — CRITICAL DISTINCTIONS</span>
+          <span>06 — AWARDS AND REVIEWS</span>
         </div>
 
         {/* Michelin Stars Center Display */}
         <div className="flex flex-col items-center justify-center mb-16 space-y-4">
           <div className="flex items-center space-x-3 text-[#C5A059]">
-            <Sparkles className="w-6 h-6 fill-[#C5A059]" />
-            <Sparkles className="w-8 h-8 fill-[#C5A059]" />
-            <Sparkles className="w-6 h-6 fill-[#C5A059]" />
+            <Sparkles className="w-4 h-4 fill-[#C5A059]" />
+            <Sparkles className="w-5 h-5 fill-[#C5A059]" />
+            <Sparkles className="w-4 h-4 fill-[#C5A059]" />
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-light text-center">
-            Three Michelin Stars & Global Acclaim
+            Loved by Guests and Critics
           </h2>
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-400">
-            Guide Michelin France • 2023, 2024, 2025
+           What people are saying about Savora
           </p>
         </div>
 
         {/* Interactive Quote Stage */}
-        <div className="relative min-h-[280px] sm:min-h-[220px] flex items-center justify-center text-center px-4 md:px-16">
-          <Quote className="absolute top-0 left-4 md:left-8 w-16 h-16 text-white/[0.04] pointer-events-none" />
+        {/* <div className="relative min-h-[280px] sm:min-h-[220px] flex items-center justify-center text-center px-4 md:px-16"> */}
+          {/* <Quote className="absolute top-0 left-4 md:left-8 w-16 h-16 text-white/[0.04] pointer-events-none" /> */}
+
+           {/* Opening quote symbol (top-left) - flipped so it looks like 66 */}
+              {/* <Quote className="absolute top-0 left-4 md:left-8 w-16 h-16 text-white/[0.04] pointer-events-none rotate-180" /> */}
+
+              {/* Closing quote symbol (bottom-right) - normal so it looks like 99 */}
+              {/* <Quote className="absolute bottom-0 right-4 md:right-8 w-16 h-16 text-white/[0.04] pointer-events-none" /> */}
+
+              {/* Interactive Quote Stage */}
+                  <div className="relative min-h-[360px] sm:min-h-[300px] flex items-center justify-center text-center px-4 py-16 sm:px-10 sm:py-14 md:px-16">
+                    {/* Opening quote symbol (top-left) */}
+                    <Quote className="absolute top-2 left-1 sm:top-0 sm:left-4 md:left-8 w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 text-white/[0.06] pointer-events-none rotate-180" />
+
+                    {/* Closing quote symbol (bottom-right) */}
+                    <Quote className="absolute bottom-2 right-1 sm:bottom-0 sm:right-4 md:right-8 w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 text-white/[0.06] pointer-events-none" />
 
           <AnimatePresence mode="wait">
             <motion.div
