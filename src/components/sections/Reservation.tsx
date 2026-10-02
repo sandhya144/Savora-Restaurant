@@ -67,13 +67,13 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
       <div className="text-center space-y-3 mb-12">
         <div className="flex items-center justify-center space-x-2 text-xs font-mono tracking-[0.3em] text-[#C5A059] uppercase">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>BESPOKE SEATING RESERVATION</span>
+          <span>BOOK YOUR RESERVATION</span>
         </div>
         <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-light">
-          Reserve Your <span className="italic gold-gradient-text">Nocturne Journey.</span>
+          Reserve Your <span className="italic gold-gradient-text">Table at Savora.</span>
         </h2>
         <p className="text-zinc-400 font-sans text-xs sm:text-sm max-w-lg mx-auto font-light">
-          Seating is limited to 32 guests per evening to preserve acoustic tranquility and gastronomic intimacy.
+         We only seat 32 guests each evening, so every table stays calm, quiet and well looked after.
         </p>
       </div>
 
@@ -114,7 +114,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     0{s}
                   </span>
                   <span className="hidden sm:inline">
-                    {s === 1 ? 'Chamber' : s === 2 ? 'Date & Time' : 'Guest Details'}
+                    {s === 1 ? 'Choose a room' : s === 2 ? 'Date & Time' : 'Your Details'}
                   </span>
                 </button>
               ))}
@@ -130,21 +130,21 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {[
                     {
-                      id: 'tasting_menu',
-                      title: 'The Dining Room',
-                      desc: 'Full 8-course Nocturne tasting amidst volcanic basalt and whisper acoustics.',
+                      id: 'main_dining',
+                      title: 'Main Dining Room',
+                      desc: 'Our full tasting menu in a quiet, softly lit room with dark stone tables.',
                       badge: '1 - 4 Guests',
                     },
                     {
-                      id: 'chefs_counter',
-                      title: "Chef's Hearth",
-                      desc: 'Front-row view of the live Binchotan embers and delicate plating pass.',
-                      badge: 'Solo or Pair',
+                      id: 'beverage_bar',
+                      title: 'Beverage Bar',
+                      desc: 'Cocktails, wine and non-alcoholic drinks at our bar, before or after your meal.',
+                      badge: '1 - 4 Guests',
                     },
                     {
-                      id: 'private_salon',
-                      title: "Salon L'Alchimiste",
-                      desc: 'Private subterranean chamber with dedicated sommelier and live hearth.',
+                      id: 'private_room',
+                      title: 'Private Room',
+                      desc: 'A private room for your group, with a menu made just for you.',
                       badge: '6 - 10 Guests',
                     },
                   ].map((item) => (
@@ -197,7 +197,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     onClick={() => setStep(2)}
                     className="px-8 py-3.5 rounded-full bg-[#C5A059] text-[#080808] text-xs font-mono uppercase tracking-widest font-semibold hover:bg-[#d6b46b] transition-colors"
                   >
-                    Continue to Date & Time
+                    Next: Date & time
                   </button>
                 </div>
               </motion.div>
@@ -231,7 +231,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                      Seating Service Hour
+                      Service Hour
                     </label>
                     <div className="relative">
                       <select
@@ -240,11 +240,11 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                         onChange={handleInputChange}
                         className="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white font-mono focus:border-[#C5A059] focus:outline-none appearance-none"
                       >
-                        <option value="19:00">19:00 — First Nocturne Seating</option>
-                        <option value="19:30">19:30 — Prime Hearth Seating</option>
-                        <option value="20:00">20:00 — Solstice Seating</option>
-                        <option value="20:30">20:30 — Twilight Seating</option>
-                        <option value="21:00">21:00 — Late Nocturne Seating</option>
+                        <option value="19:00">19:00 — Early evening</option>
+                        <option value="19:30">19:30 — Evening</option>
+                        <option value="20:00">20:00 — Evening</option>
+                        <option value="20:30">20:30 — Late evening</option>
+                        <option value="21:00">21:00 — Late dinner</option>
                       </select>
                       <Clock className="absolute right-4 top-3.5 w-4 h-4 text-zinc-500 pointer-events-none" />
                     </div>
@@ -254,7 +254,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                 <div className="p-4 rounded-xl bg-zinc-900/50 border border-white/10 flex items-center space-x-3 text-xs text-zinc-400 font-mono">
                   <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
                   <span>
-                    Dress Code: Elegant Evening Attire required. Jackets requested for gentlemen.
+                    Dress code: smart casual. Please dress nicely for the evening.
                   </span>
                 </div>
 
@@ -271,7 +271,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     onClick={() => setStep(3)}
                     className="px-8 py-3.5 rounded-full bg-[#C5A059] text-[#080808] text-xs font-mono uppercase tracking-widest font-semibold hover:bg-[#d6b46b] transition-colors"
                   >
-                    Proceed to Guest Info
+                    Next: Your details
                   </button>
                 </div>
               </motion.div>
@@ -292,7 +292,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     <input
                       type="text"
                       name="fullName"
-                      placeholder="e.g. Lord Julian Sterling"
+                      placeholder="e.g. Kartik Aggarwal"
                       value={formData.fullName}
                       onChange={handleInputChange}
                       required
@@ -307,7 +307,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     <input
                       type="email"
                       name="email"
-                      placeholder="julian@residence.com"
+                      placeholder="name@example.com"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
@@ -324,7 +324,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     <input
                       type="tel"
                       name="phone"
-                      placeholder="+33 6 12 34 56 78"
+                      placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
@@ -334,12 +334,12 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                      Special Celebration (Optional)
+                      Special Ocassion (Optional)
                     </label>
                     <input
                       type="text"
                       name="specialOccasion"
-                      placeholder="Anniversary, Private Celebration"
+                      placeholder="Anniversary, Birthday Celebration"
                       value={formData.specialOccasion}
                       onChange={handleInputChange}
                       className="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-[#C5A059] focus:outline-none"
@@ -349,12 +349,12 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
 
                 <div>
                   <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">
-                    Dietary Desires & Allergies
+                    Food allergies or diet needs
                   </label>
                   <textarea
                     name="dietaryNotes"
                     rows={2}
-                    placeholder="E.g., No shellfish, strict pescatarian, truffle allergies..."
+                    placeholder="E.g., No shellfish, vegetarian, nut allergys..."
                     value={formData.dietaryNotes}
                     onChange={handleInputChange}
                     className="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-[#C5A059] focus:outline-none resize-none"
@@ -374,7 +374,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                     type="submit"
                     className="px-10 py-4 rounded-full bg-[#C5A059] text-[#080808] text-xs font-mono uppercase tracking-[0.25em] font-semibold hover:bg-[#d6b46b] transition-all shadow-xl shadow-[#C5A059]/20"
                   >
-                    Confirm & Transmit Request
+                    Confirm reservation
                   </button>
                 </div>
               </motion.div>
@@ -400,7 +400,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
                 We Await Your Arrival, {formData.fullName || 'Guest'}.
               </h3>
               <p className="text-zinc-400 font-sans text-sm max-w-md mx-auto font-light">
-                An authenticated invitation pass has been dispatched to your email address. Our head concierge will contact you 48 hours prior.
+                We have sent your booking details to your email. Our team will contact you 48 hours before your visit to confirm.
               </p>
             </div>
 
@@ -408,7 +408,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
             <div className="max-w-md mx-auto p-6 rounded-2xl bg-zinc-900 border border-[#C5A059]/40 text-left space-y-4 font-mono">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
                 <span className="text-xs text-[#C5A059] uppercase tracking-widest">
-                  L'ÉCRIN PARIS
+                 SAVORA
                 </span>
                 <span className="text-xs text-zinc-400">{reservationCode}</span>
               </div>
@@ -435,7 +435,7 @@ export const Reservation: React.FC<ReservationProps> = ({ isModal = false, onClo
               </div>
 
               <div className="pt-2 border-t border-white/10 text-[10px] text-zinc-500">
-                18 Place Vendôme, Paris • Tel: +33 (0)1 42 68 18 90
+                18 Place Banglore, India • Tel: +91 98765 43210
               </div>
             </div>
 
