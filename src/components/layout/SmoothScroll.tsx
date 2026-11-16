@@ -19,6 +19,8 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
       smoothWheel: true,
       wheelMultiplier: 0.95,
       touchMultiplier: 1.5,
+      // Allow independent scrolling inside the navigation drawer
+      prevent: (node) => node.hasAttribute('data-lenis-prevent'),
     });
 
     lenisRef.current = lenis;

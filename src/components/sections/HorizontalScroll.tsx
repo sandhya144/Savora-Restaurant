@@ -42,7 +42,7 @@ export const HorizontalScroll: React.FC = () => {
 
   return (
     <section
-      id="gallery"
+      id="odyssey"
       ref={sectionRef}
       className="relative w-full bg-[#080808] border-b border-white/10 select-none overflow-hidden"
     >

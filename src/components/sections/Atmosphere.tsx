@@ -50,7 +50,7 @@ export const Atmosphere: React.FC<{ onOpenReservation: () => void }> = ({ onOpen
 
   return (
     <section
-      id="spaces"
+      id="salons"
       className="relative w-full py-28 md:py-40 px-6 md:px-16 bg-[#080808] border-b border-white/10 select-none"
     >
       <div className="max-w-7xl mx-auto">

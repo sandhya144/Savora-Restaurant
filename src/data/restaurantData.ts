@@ -5,7 +5,7 @@ export const RESTAURANT_INFO = {
   tagline: " Where Every Bite Tells a Story.",
   subheadline: "Where Flavor Finds Its Soul",
   michelinStars: 3,
-  location: "18 Place Banglore , India",
+  location: "18 Place, Bangalore, India",
   openingHours: "Tuesday – Saturday • 19:00 — 23:30",
   privateSalonHours: "Wednesday – Sunday • By Private Appointment",
   sommelier: "Julien de Saint-Hilaire",

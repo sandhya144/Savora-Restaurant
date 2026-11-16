@@ -1,12 +1,3 @@
-export type AccountRole = 'user' | 'foodPartner';
-
-export interface AuthAccount {
-  _id: string;
-  email: string;
-  name: string;
-  role: AccountRole;
-}
-
 export interface MenuItem {
   id: string;
   courseNumber: string;
@@ -46,17 +37,5 @@ export interface Accolade {
   quote: string;
   year: string;
   distinction: string;
-}
-
-export interface ReservationFormData {
-  date: string;
-  time: string;
-  guests: number;
-  experience: 'tasting_menu' | 'private_salon' | 'chefs_counter';
-  dietaryNotes: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  specialOccasion?: string;
 }
 

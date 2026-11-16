@@ -1,3 +1,218 @@
+
+// import React from 'react';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import { X, ArrowUpRight, Compass, Clock, Phone } from 'lucide-react';
+// import { RESTAURANT_INFO } from '../../data/restaurantData';
+// import { useSmoothScroll } from '../../context/SmoothScrollContext';
+
+// interface NavigationDrawerProps {
+//   isOpen: boolean;
+//   onClose: () => void;
+//   onOpenReservation: () => void;
+// }
+
+// const navLinks = [
+//   { name: 'Our Story', subtitle: 'Our Philosophy & Passion for Food', href: '#philosophy' },
+//   { name: 'Our Menu', subtitle: 'Signature Tasting Experiences', href: '#menu' },
+//   { name: 'The Experience', subtitle: 'Food, Ambience & Culinary Craft', href: '#gallery' },
+//   { name: 'Dining Spaces', subtitle: 'Private Dining & Special Gatherings', href: '#spaces' },
+//   { name: 'Meet Our Chef', subtitle: 'The People Behind Every Dish', href: '#chef' },
+//   { name: 'Guest Reviews', subtitle: 'Experiences Shared by Our Guests', href: '#accolades' },
+//   { name: 'Reservations', subtitle: 'Book Your Table at SAVORA', href: '#reservation' },
+// ];
+
+// export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
+//   isOpen,
+//   onClose,
+//   onOpenReservation,
+// }) => {
+//   const { scrollTo } = useSmoothScroll();
+
+//   const handleLinkClick = (href: string) => {
+//     onClose();
+
+//     if (href === '#reservation') {
+//     //   onOpenReservation();
+//         scrollTo('#reservation');
+//     } else {
+//       setTimeout(() => {
+//         scrollTo(href);
+//       }, 300);
+//     }
+//   };
+
+//   return (
+//     <AnimatePresence>
+//       {isOpen && (
+//         <motion.div
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: 1 }}
+//           exit={{ opacity: 0 }}
+//           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+//           data-lenis-prevent
+//           className="fixed inset-0 z-[90] flex min-h-[100dvh] flex-col overflow-y-auto overscroll-contain bg-[#080808]/95 p-4 backdrop-blur-2xl sm:p-8 md:p-10 lg:p-14"
+//         >
+//           {/* Header */}
+//           <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-5 sm:pb-6">
+//             <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+//               <span className="font-serif text-lg font-light uppercase tracking-[0.12em] text-[#C5A059] sm:text-2xl sm:tracking-[0.2em]">
+//                 {RESTAURANT_INFO.name}
+//               </span>
+
+//               <span className="hidden sm:inline-block font-mono text-xs uppercase tracking-[0.3em] text-zinc-500">
+//                 • Fine Dining 
+//               </span>
+//             </div>
+
+//             <button
+//               onClick={onClose}
+//               aria-label="Close navigation menu"
+//               data-cursor="CLOSE"
+//               className="group flex shrink-0 items-center space-x-2 rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-300 hover:border-[#C5A059]/50 hover:text-white sm:px-4"
+//             >
+//               <span className="hidden sm:inline">Close</span>
+//               <X className="h-4 w-4 text-[#C5A059] transition-transform duration-300 group-hover:rotate-90" />
+//             </button>
+//           </div>
+
+//           {/* Navigation Links */}
+//           <div className="my-8 grid flex-1 grid-cols-1 gap-8 sm:my-10 lg:my-auto lg:grid-cols-12 lg:gap-10 lg:py-10">
+//             <div className="flex flex-col gap-4 sm:gap-5 lg:col-span-7">
+//               {navLinks.map((link, idx) => (
+//                 <motion.div
+//                   key={link.name}
+//                   initial={{ opacity: 0, x: -20 }}
+//                   animate={{ opacity: 1, x: 0 }}
+//                   transition={{
+//                     delay: 0.1 + idx * 0.06,
+//                     duration: 0.5,
+//                     ease: [0.16, 1, 0.3, 1],
+//                   }}
+//                   className="group flex flex-col"
+//                 >
+//                   <button
+//                     onClick={() => handleLinkClick(link.href)}
+//                     className="flex w-full items-center gap-3 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5A059] sm:gap-4"
+//                   >
+//                     <span className="shrink-0 font-mono text-[10px] text-[#C5A059]/60 transition-colors group-hover:text-[#C5A059] sm:text-xs">
+//                       0{idx + 1}
+//                     </span>
+
+
+//                     <span className="font-serif text-xl tracking-tight text-zinc-200 transition-all duration-300 group-hover:italic group-hover:text-[#C5A059] sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl">
+//                     {link.name}
+//                     </span>
+
+//                     <ArrowUpRight className="h-4 w-4 shrink-0 text-[#C5A059] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100 sm:h-5 sm:w-5" />
+//                   </button>
+
+//                   <span className="ml-7 mt-1 text-[9px] uppercase tracking-[0.15em] text-zinc-500 sm:ml-8 sm:text-[10px] sm:tracking-[0.2em] md:text-xs">
+//                     {link.subtitle}
+//                   </span>
+//                 </motion.div>
+//               ))}
+//             </div>
+
+//             {/* Restaurant Information */}
+//             <motion.div
+//               initial={{ opacity: 0, y: 30 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ delay: 0.4, duration: 0.7 }}
+//               className="space-y-6 lg:col-span-5 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-white/10 lg:pl-8 xl:pl-12"
+//             >
+//               <div className="space-y-5 sm:space-y-6">
+
+//                 {/* Location */}
+//                 <div>
+//                   <div className="mb-2 flex items-center space-x-2 text-[#C5A059]">
+//                     <Compass className="h-4 w-4" />
+//                     <span className="font-mono text-xs uppercase tracking-[0.25em]">
+//                       Visit Us
+//                     </span>
+//                   </div>
+
+//                   <p className="text-sm leading-relaxed text-zinc-300">
+//                    Bengaluru, Karnataka, India
+//                   </p>
+
+//                   <p className="mt-1 font-mono text-xs text-zinc-500">
+//                     Experience Exceptional Dining at SAVORA
+//                   </p>
+//                 </div>
+
+//                 {/* Opening Hours */}
+//                 <div>
+//                   <div className="mb-2 flex items-center space-x-2 text-[#C5A059]">
+//                     <Clock className="h-4 w-4" />
+//                     <span className="font-mono text-xs uppercase tracking-[0.25em]">
+//                       Opening Hours
+//                     </span>
+//                   </div>
+
+//                   <p className="text-sm text-zinc-300">
+//                     {RESTAURANT_INFO.openingHours}
+//                   </p>
+
+//                   <p className="mt-1 text-xs text-zinc-500">
+//                     Private Dining: By Advance Reservation
+//                   </p>
+//                 </div>
+
+//                 {/* Contact */}
+//                 <div>
+//                   <div className="mb-2 flex items-center space-x-2 text-[#C5A059]">
+//                     <Phone className="h-4 w-4" />
+//                     <span className="font-mono text-xs uppercase tracking-[0.25em]">
+//                       Contact Us
+//                     </span>
+//                   </div>
+
+//                   <p className="font-mono text-sm text-zinc-300">
+//                     +91 98765 43210
+//                   </p>
+
+//                   <p className="text-xs text-zinc-500">
+//                     reservations@savora.in
+//                   </p>
+//                 </div>
+//               </div>
+
+//               {/* Reservation CTA */}
+//               <div className="border-t border-white/10 pt-6">
+//                 <button
+//                   onClick={() => {
+//                     onClose();
+//                     onOpenReservation();
+//                   }}
+//                   className="group flex w-full items-center justify-center space-x-2 rounded-full bg-[#C5A059] px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#080808] transition-all duration-300 hover:bg-[#d6b46b]"
+//                 >
+//                   <span>Book Your Table</span>
+//                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+//                 </button>
+//               </div>
+//             </motion.div>
+//           </div>
+
+//           {/* Footer */}
+//           <div className="flex shrink-0 flex-col items-center justify-between gap-2 border-t border-white/10 pt-5 text-center font-mono text-[10px] tracking-wider text-zinc-500 sm:flex-row sm:pt-6 sm:text-left sm:text-[11px]">
+//             <span>CRAFTED WITH PASSION • SERVED WITH CARE</span>
+//             <span>
+//               © {new Date().getFullYear()} SAVORA. ALL RIGHTS RESERVED.
+//             </span>
+//           </div>
+//         </motion.div>
+//       )}
+//     </AnimatePresence>
+//   );
+// };
+
+
+
+
+
+
+
+
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowUpRight, Compass, Clock, Phone } from 'lucide-react';
@@ -7,37 +222,30 @@ import { useSmoothScroll } from '../../context/SmoothScrollContext';
 interface NavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenReservation: () => void;
-  onOpenAuth: () => void;
 }
 
 const navLinks = [
-  { name: 'The Sanctuary', subtitle: 'Atmosphere & Philosophy', href: '#philosophy' },
-  { name: 'Tasting Menus', subtitle: 'Nocturne & Solstice', href: '#menu' },
-  { name: 'The Odyssey', subtitle: 'Horizontal Craft Exhibition', href: '#gallery' },
-  { name: 'Spaces & Salons', subtitle: 'Private Dining & Basalt Vault', href: '#spaces' },
-  { name: 'The Chef', subtitle: 'Alexandre Vaneau & Lineage', href: '#chef' },
-  { name: 'Accolades', subtitle: 'Press & Michelin Distinction', href: '#accolades' },
-  { name: 'Reserve', subtitle: 'Table Inquiries & Salon Inquiries', href: '#reservation' },
+  { name: 'Our Story', subtitle: 'Our Philosophy & Passion for Food', href: '#philosophy' },
+  { name: 'Our Menu', subtitle: 'Signature Tasting Experiences', href: '#menu' },
+  { name: 'The Experience', subtitle: 'Food, Ambience & Culinary Craft', href: '#gallery' },
+  { name: 'Dining Spaces', subtitle: 'Private Dining & Special Gatherings', href: '#spaces' },
+  { name: 'Meet Our Chef', subtitle: 'The People Behind Every Dish', href: '#chef' },
+  { name: 'Guest Reviews', subtitle: 'Experiences Shared by Our Guests', href: '#accolades' },
+  { name: 'Reservations', subtitle: 'Book Your Table at SAVORA', href: '#reservation' },
 ];
 
 export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   isOpen,
   onClose,
-  onOpenReservation,
-  onOpenAuth,
 }) => {
   const { scrollTo } = useSmoothScroll();
 
   const handleLinkClick = (href: string) => {
     onClose();
-    if (href === '#reservation') {
-      onOpenReservation();
-    } else {
-      setTimeout(() => {
-        scrollTo(href);
-      }, 300);
-    }
+
+    setTimeout(() => {
+      scrollTo(href);
+    }, 550);
   };
 
   return (
@@ -48,136 +256,153 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[90] bg-[#080808]/95 backdrop-blur-2xl flex flex-col justify-between p-6 md:p-14 overflow-y-auto"
+          data-lenis-prevent
+          className="fixed inset-0 z-[90] flex min-h-[100dvh] flex-col overflow-y-auto overscroll-contain bg-[#080808]/95 p-4 backdrop-blur-2xl sm:p-8 md:p-10 lg:p-14"
         >
-          {/* Top header bar */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-6">
-            <div className="flex items-center space-x-4">
-              <span className="font-serif text-2xl tracking-[0.2em] text-[#C5A059] uppercase font-light">
+          {/* Header */}
+          <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-5 sm:pb-6">
+            <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+              <span className="font-serif text-lg font-light uppercase tracking-[0.12em] text-[#C5A059] sm:text-2xl sm:tracking-[0.2em]">
                 {RESTAURANT_INFO.name}
               </span>
-              <span className="hidden sm:inline-block text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono">
-                Atelier Paris
+
+              <span className="hidden sm:inline-block font-mono text-xs uppercase tracking-[0.3em] text-zinc-500">
+                • Fine Dining
               </span>
             </div>
 
             <button
               onClick={onClose}
+              aria-label="Close navigation menu"
               data-cursor="CLOSE"
-              className="group flex items-center space-x-2 text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors duration-300 px-4 py-2 rounded-full border border-white/10 hover:border-[#C5A059]/50"
+              className="group flex shrink-0 items-center space-x-2 rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-300 hover:border-[#C5A059]/50 hover:text-white sm:px-4"
             >
               <span className="hidden sm:inline">Close</span>
-              <X className="w-4 h-4 transition-transform duration-300 group-hover:rotate-90 text-[#C5A059]" />
+              <X className="h-4 w-4 text-[#C5A059] transition-transform duration-300 group-hover:rotate-90" />
             </button>
           </div>
 
-          {/* Center navigation links */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto py-12">
-            <div className="lg:col-span-7 flex flex-col space-y-4 md:space-y-6">
+          {/* Navigation Links */}
+          <div className="my-8 grid flex-1 grid-cols-1 gap-8 sm:my-10 lg:my-auto lg:grid-cols-12 lg:gap-10 lg:py-10">
+            <div className="flex flex-col gap-4 sm:gap-5 lg:col-span-7">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + idx * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{
+                    delay: 0.1 + idx * 0.06,
+                    duration: 0.5,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                   className="group flex flex-col"
                 >
                   <button
                     onClick={() => handleLinkClick(link.href)}
-                    className="flex items-baseline space-x-4 text-left w-full focus:outline-none"
+                    className="flex w-full items-center gap-3 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5A059] sm:gap-4"
                   >
-                    <span className="font-mono text-xs text-[#C5A059]/60 group-hover:text-[#C5A059] transition-colors duration-300">
+                    <span className="shrink-0 font-mono text-[10px] text-[#C5A059]/60 transition-colors group-hover:text-[#C5A059] sm:text-xs">
                       0{idx + 1}
                     </span>
-                    <span className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-zinc-200 group-hover:text-[#C5A059] group-hover:italic transition-all duration-300 tracking-tight">
+
+                    <span className="font-serif text-xl tracking-tight text-zinc-200 transition-all duration-300 group-hover:italic group-hover:text-[#C5A059] sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl">
                       {link.name}
                     </span>
-                    <ArrowUpRight className="w-5 h-5 text-[#C5A059] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-[#C5A059] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100 sm:h-5 sm:w-5" />
                   </button>
-                  <span className="text-xs uppercase tracking-[0.2em] text-zinc-500 ml-8 hidden sm:block">
+
+                  <span className="ml-7 mt-1 text-[9px] uppercase tracking-[0.15em] text-zinc-500 sm:ml-8 sm:text-[10px] sm:tracking-[0.2em] md:text-xs">
                     {link.subtitle}
                   </span>
                 </motion.div>
               ))}
             </div>
 
-            {/* Right side editorial details */}
+            {/* Restaurant Information */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:border-l lg:border-white/10 lg:pl-12"
+              className="space-y-6 lg:col-span-5 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-white/10 lg:pl-8 xl:pl-12"
             >
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
+
+                {/* Location */}
                 <div>
-                  <div className="flex items-center space-x-2 text-[#C5A059] mb-2">
-                    <Compass className="w-4 h-4" />
-                    <span className="text-xs uppercase tracking-[0.25em] font-mono">Location</span>
+                  <div className="mb-2 flex items-center space-x-2 text-[#C5A059]">
+                    <Compass className="h-4 w-4" />
+                    <span className="font-mono text-xs uppercase tracking-[0.25em]">
+                      Visit Us
+                    </span>
                   </div>
-                  <p className="text-sm font-sans text-zinc-300 leading-relaxed">
-                    18 Place Vendôme, 75001 Paris, France
+
+                  <p className="text-sm leading-relaxed text-zinc-300">
+                    Bengaluru, Karnataka, India
                   </p>
-                  <p className="text-xs font-mono text-zinc-500 mt-1">
-                    48°51'24.8"N 2°21'07.2"E
+
+                  <p className="mt-1 font-mono text-xs text-zinc-500">
+                    Experience Exceptional Dining at SAVORA
                   </p>
                 </div>
 
+                {/* Opening Hours */}
                 <div>
-                  <div className="flex items-center space-x-2 text-[#C5A059] mb-2">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-xs uppercase tracking-[0.25em] font-mono">Hours of Service</span>
+                  <div className="mb-2 flex items-center space-x-2 text-[#C5A059]">
+                    <Clock className="h-4 w-4" />
+                    <span className="font-mono text-xs uppercase tracking-[0.25em]">
+                      Opening Hours
+                    </span>
                   </div>
+
                   <p className="text-sm text-zinc-300">
-                    Dinner: Tuesday — Saturday, 19:00 — 23:30
+                    {RESTAURANT_INFO.openingHours}
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">
-                    Private Salon: By advance bespoke curation
+
+                  <p className="mt-1 text-xs text-zinc-500">
+                    Private Dining: By Advance Reservation
                   </p>
                 </div>
 
+                {/* Contact */}
                 <div>
-                  <div className="flex items-center space-x-2 text-[#C5A059] mb-2">
-                    <Phone className="w-4 h-4" />
-                    <span className="text-xs uppercase tracking-[0.25em] font-mono">Concierge</span>
+                  <div className="mb-2 flex items-center space-x-2 text-[#C5A059]">
+                    <Phone className="h-4 w-4" />
+                    <span className="font-mono text-xs uppercase tracking-[0.25em]">
+                      Contact Us
+                    </span>
                   </div>
-                  <p className="text-sm text-zinc-300 font-mono">
-                    +33 (0)1 42 68 18 90
+
+                  <p className="font-mono text-sm text-zinc-300">
+                    +91 98765 43210
                   </p>
+
                   <p className="text-xs text-zinc-500">
-                    concierge@lecrin-paris.fr
+                    reservations@savora.in
                   </p>
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-white/10">
+              {/* Reservation CTA */}
+              <div className="border-t border-white/10 pt-6">
                 <button
-                  onClick={() => {
-                    onClose();
-                    onOpenAuth();
-                  }}
-                  className="mb-3 flex w-full items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-xs font-medium uppercase tracking-[0.25em] text-zinc-300 transition-colors hover:border-[#C5A059]/60 hover:text-[#C5A059]"
+                  onClick={() => handleLinkClick('#reservation')}
+                  className="group flex w-full items-center justify-center space-x-2 rounded-full bg-[#C5A059] px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#080808] transition-all duration-300 hover:bg-[#d6b46b]"
                 >
-                  Sign in or create account
-                  <ArrowUpRight className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={() => {
-                    onClose();
-                    onOpenReservation();
-                  }}
-                  className="w-full py-4 px-6 rounded-full bg-[#C5A059] hover:bg-[#d6b46b] text-[#080808] font-sans text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-300 flex items-center justify-center space-x-2 group"
-                >
-                  <span>Request Table Reservation</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <span>Book Your Table</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </button>
               </div>
             </motion.div>
           </div>
 
-          {/* Bottom metadata */}
-          <div className="flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-6 text-[11px] text-zinc-500 font-mono tracking-wider">
-            <span>THREE MICHELIN STARS • 2025</span>
-            <span className="mt-2 sm:mt-0">© {new Date().getFullYear()} L'ÉCRIN ATELIER ALL RIGHTS RESERVED</span>
+          {/* Footer */}
+          <div className="flex shrink-0 flex-col items-center justify-between gap-2 border-t border-white/10 pt-5 text-center font-mono text-[10px] tracking-wider text-zinc-500 sm:flex-row sm:pt-6 sm:text-left sm:text-[11px]">
+            <span>CRAFTED WITH PASSION • SERVED WITH CARE</span>
+
+            <span>
+              © {new Date().getFullYear()} SAVORA. ALL RIGHTS RESERVED.
+            </span>
           </div>
         </motion.div>
       )}

@@ -1,227 +1,205 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { LogOut, Menu, Sparkles, Volume2, VolumeX } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Volume2, VolumeX, Menu, Sparkles } from 'lucide-react';
 import { RESTAURANT_INFO } from '../../data/restaurantData';
 import { Magnetic } from '../common/Magnetic';
 import { useSmoothScroll } from '../../context/SmoothScrollContext';
-import type { AccountRole } from '../../types';
 
 interface NavbarProps {
-  isAuthenticated: boolean;
-  accountName?: string;
-  accountRole?: AccountRole;
   onOpenDrawer: () => void;
-  onOpenReservation: () => void;
-  onOpenAuth: (mode: 'login' | 'signup') => void;
-  onLogout: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  isAuthenticated,
-  accountName,
-  accountRole,
-  onOpenDrawer,
-  onOpenReservation,
-  onOpenAuth,
-  onLogout,
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenDrawer}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
+  const noiseSourceRef = useRef<AudioBufferSourceNode | null>(null);
   const { scrollTo } = useSmoothScroll();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Web Audio API ambient embers & room tone generator
   const toggleAmbientAudio = () => {
     if (isPlayingAudio) {
+      // Fade out
       if (gainNodeRef.current && audioContextRef.current) {
         gainNodeRef.current.gain.setTargetAtTime(0, audioContextRef.current.currentTime, 0.5);
-        window.setTimeout(() => {
-          void audioContextRef.current?.suspend();
+        setTimeout(() => {
+          if (audioContextRef.current) {
+            audioContextRef.current.suspend();
+          }
           setIsPlayingAudio(false);
         }, 500);
       }
-      return;
-    }
+    } else {
+      // Initialize Web Audio Context if not present
+      if (!audioContextRef.current) {
+        const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        const ctx = new AudioCtx();
+        audioContextRef.current = ctx;
 
-    if (!audioContextRef.current) {
-      const AudioCtx =
-        window.AudioContext ||
-        (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const context = new AudioCtx();
-      audioContextRef.current = context;
+        // Generate warm pink noise buffer for cozy fireplace ambience
+        const bufferSize = ctx.sampleRate * 2;
+        const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
 
-      const bufferSize = context.sampleRate * 2;
-      const noiseBuffer = context.createBuffer(1, bufferSize, context.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-      let b0 = 0;
-      let b1 = 0;
-      let b2 = 0;
-      let b3 = 0;
-      let b4 = 0;
-      let b5 = 0;
-      let b6 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          b3 = 0.86650 * b3 + white * 0.3104856;
+          b4 = 0.55000 * b4 + white * 0.5329522;
+          b5 = -0.7616 * b5 - white * 0.0168980;
+          output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.015;
+          b6 = white * 0.115926;
+        }
 
-      for (let i = 0; i < bufferSize; i++) {
-        const white = Math.random() * 2 - 1;
-        b0 = 0.99886 * b0 + white * 0.0555179;
-        b1 = 0.99332 * b1 + white * 0.0750756;
-        b2 = 0.969 * b2 + white * 0.153852;
-        b3 = 0.8665 * b3 + white * 0.3104856;
-        b4 = 0.55 * b4 + white * 0.532952;
-        b5 = -0.7616 * b5 - white * 0.016898;
-        output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.015;
-        b6 = white * 0.115926;
+        const whiteNoise = ctx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        // Warm Low-pass filter
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 450;
+
+        const gainNode = ctx.createGain();
+        gainNode.gain.value = 0.08;
+
+        whiteNoise.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        whiteNoise.start(0);
+        noiseSourceRef.current = whiteNoise;
+        gainNodeRef.current = gainNode;
+      } else if (audioContextRef.current.state === 'suspended') {
+        audioContextRef.current.resume();
+        if (gainNodeRef.current) {
+          gainNodeRef.current.gain.setTargetAtTime(0.08, audioContextRef.current.currentTime, 0.5);
+        }
       }
-
-      const source = context.createBufferSource();
-      source.buffer = noiseBuffer;
-      source.loop = true;
-      const filter = context.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 450;
-      const gain = context.createGain();
-      gain.gain.value = 0.08;
-      source.connect(filter);
-      filter.connect(gain);
-      gain.connect(context.destination);
-      source.start();
-      gainNodeRef.current = gain;
-    } else if (audioContextRef.current.state === 'suspended') {
-      void audioContextRef.current.resume();
-      gainNodeRef.current?.gain.setTargetAtTime(0.08, audioContextRef.current.currentTime, 0.5);
+      setIsPlayingAudio(true);
     }
-    setIsPlayingAudio(true);
   };
-
-  if (!isAuthenticated) {
-    return (
-      <header className="fixed top-0 left-0 z-40 w-full border-b border-white/10 bg-[#080808]/75 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-5 sm:px-6 md:px-12">
-          <a
-            href="#hero"
-            className="shrink-0 font-serif text-xl uppercase tracking-[0.2em] text-white transition-colors hover:text-[#C5A059] md:text-2xl"
-          >
-            {RESTAURANT_INFO.name}
-          </a>
-          <nav aria-label="Main navigation" className="flex items-center gap-3 sm:gap-9">
-            <a href="#hero" className="text-[10px] uppercase tracking-[0.12em] text-zinc-300 hover:text-[#C5A059] sm:text-xs sm:tracking-[0.18em]">
-              Home
-            </a>
-            <a href="#menu" className="text-[10px] uppercase tracking-[0.12em] text-zinc-300 hover:text-[#C5A059] sm:text-xs sm:tracking-[0.18em]">
-              Menus
-            </a>
-            <button
-              onClick={() => onOpenAuth('signup')}
-              className="text-[10px] uppercase tracking-[0.12em] text-zinc-300 hover:text-[#C5A059] sm:text-xs sm:tracking-[0.18em]"
-            >
-              Sign up
-            </button>
-            <button
-              onClick={() => onOpenAuth('login')}
-              className="rounded-full bg-[#C5A059] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#080808] transition-colors hover:bg-[#d6b46b] sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.18em]"
-            >
-              Log in
-            </button>
-          </nav>
-        </div>
-      </header>
-    );
-  }
 
   return (
     <header
-      className={`fixed top-0 left-0 z-40 w-full transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
         isScrolled
-          ? 'border-b border-white/10 bg-[#080808]/85 py-4 shadow-2xl backdrop-blur-md'
+          ? 'bg-[#080808]/85 backdrop-blur-md border-b border-white/10 py-4 shadow-2xl'
           : 'bg-transparent py-6 md:py-8'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        {/* Left: Navigation Menu Toggle & Sound */}
         <div className="flex items-center space-x-4 md:space-x-6">
           <Magnetic strength={0.25}>
             <button
               onClick={onOpenDrawer}
-              className="flex items-center space-x-2 rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.25em] text-zinc-300 transition-colors hover:border-[#C5A059]/60 hover:text-white"
+              data-cursor="MENU"
+              className="flex items-center space-x-2 text-xs uppercase tracking-[0.25em] text-zinc-300 hover:text-white px-3 py-2 rounded-full border border-white/10 hover:border-[#C5A059]/60 transition-colors duration-300"
               aria-label="Open Navigation Menu"
             >
-              <Menu className="h-4 w-4 text-[#C5A059]" />
+              <Menu className="w-4 h-4 text-[#C5A059]" />
               <span className="hidden sm:inline">Menu</span>
             </button>
           </Magnetic>
 
+          {/* Ambient Sound Trigger */}
           <Magnetic strength={0.2}>
             <button
               onClick={toggleAmbientAudio}
-              className={`flex items-center space-x-2 rounded-full border px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] transition-all ${
+              data-cursor="AUDIO"
+              className={`flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-mono px-3 py-2 rounded-full border transition-all duration-300 ${
                 isPlayingAudio
-                  ? 'border-[#C5A059] bg-[#C5A059]/10 text-[#C5A059]'
+                  ? 'border-[#C5A059] text-[#C5A059] bg-[#C5A059]/10'
                   : 'border-white/10 text-zinc-400 hover:text-zinc-200'
               }`}
               title={isPlayingAudio ? 'Mute ambient sound' : 'Play ambient sound'}
             >
-              {isPlayingAudio ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
-              <span className="hidden lg:inline text-[10px]">Atmosphere</span>
+              {isPlayingAudio ? (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 animate-pulse text-[#C5A059]" />
+                  <span className="hidden lg:inline text-[10px]">Atmosphere On</span>
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-3.5 h-3.5" />
+                  <span className="hidden lg:inline text-[10px]">Atmosphere</span>
+                </>
+              )}
             </button>
           </Magnetic>
         </div>
 
-        <a
-          href="#hero"
-          className="group flex flex-col items-center"
-          onClick={(event) => {
-            event.preventDefault();
-            scrollTo('#hero');
-          }}
-        >
-          <span className="mb-1 flex items-center space-x-1">
-            {Array.from({ length: RESTAURANT_INFO.michelinStars }, (_, index) => (
-              <Sparkles key={index} className="h-2.5 w-2.5 text-[#C5A059]" />
+        {/* Center: Brand Crest */}
+        <div className="flex flex-col items-center cursor-pointer group" onClick={() => scrollTo('#hero')}>
+          <div className="flex items-center space-x-1 mb-1">
+            {[...Array(RESTAURANT_INFO.michelinStars)].map((_, i) => (
+              <Sparkles
+                key={i}
+                className="w-2.5 h-2.5 text-[#C5A059] fill-[#C5A059]/60 transition-transform duration-300 group-hover:scale-125"
+              />
             ))}
-          </span>
-          <span className="font-serif text-2xl font-normal uppercase tracking-[0.25em] text-white transition-colors group-hover:text-[#C5A059] md:text-3xl">
+          </div>
+          <span className="font-serif text-2xl md:text-3xl tracking-[0.25em] text-white font-normal uppercase transition-colors duration-300 group-hover:text-[#C5A059]">
             {RESTAURANT_INFO.name}
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-zinc-400">
-            The Dining Atelier
+          <span className="text-[9px] uppercase tracking-[0.35em] text-zinc-400 font-mono">
+            Fine Dining
           </span>
-        </a>
+        </div>
 
-        <div className="flex items-center space-x-5">
-          <nav className="hidden items-center space-x-6 font-sans text-xs uppercase tracking-[0.16em] text-zinc-300 xl:flex">
-            <button onClick={() => scrollTo('#philosophy')} className="transition-colors hover:text-[#C5A059]">Story</button>
-            <button onClick={() => scrollTo('#menu')} className="transition-colors hover:text-[#C5A059]">Menus</button>
-            <button onClick={() => scrollTo('#gallery')} className="transition-colors hover:text-[#C5A059]">Gallery</button>
-          </nav>
-
-          <div className="hidden text-right lg:block">
-            <span className="block max-w-32 truncate text-[10px] text-zinc-300">{accountName}</span>
-            <span className="font-mono text-[9px] uppercase tracking-wider text-[#C5A059]">
-              {accountRole === 'foodPartner' ? 'Food partner' : 'Guest'}
-            </span>
-          </div>
-
-          <Magnetic strength={0.2}>
+        {/* Right: Quick Anchor & Reservation Button */}
+        <div className="flex items-center space-x-6">
+          <nav className="hidden xl:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] text-zinc-300 font-sans">
             <button
-              onClick={onLogout}
-              aria-label="Sign out"
-              className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-zinc-300 transition-colors hover:text-[#C5A059]"
+              onClick={() => scrollTo('#philosophy')}
+              className="hover:text-[#C5A059] transition-colors duration-300"
             >
-              <LogOut className="h-4 w-4" />
-              <span className="hidden sm:inline">Sign out</span>
+              Philosophy
             </button>
-          </Magnetic>
+            <button
+              onClick={() => scrollTo('#menu')}
+              className="hover:text-[#C5A059] transition-colors duration-300"
+            >
+              Menus
+            </button>
+            <button
+              onClick={() => scrollTo('#odyssey')}
+              className="hover:text-[#C5A059] transition-colors duration-300"
+            >
+              Odyssey
+            </button>
+            <button
+              onClick={() => scrollTo('#salons')}
+              className="hover:text-[#C5A059] transition-colors duration-300"
+            >
+              Salons
+            </button>
+          </nav>
 
           <Magnetic strength={0.3}>
             <button
-              onClick={onOpenReservation}
-              className="rounded-full bg-[#C5A059] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#080808] shadow-lg shadow-[#C5A059]/10 transition-transform hover:scale-105 active:scale-95"
+              onClick={() => scrollTo('#reservation')}
+              data-cursor="BOOK"
+              className="relative px-5 py-2.5 rounded-full overflow-hidden bg-[#C5A059] text-[#080808] text-xs uppercase tracking-[0.2em] font-semibold transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-[#C5A059]/10"
             >
-              Reserve
+              <span>Reserve</span>
             </button>
           </Magnetic>
         </div>
